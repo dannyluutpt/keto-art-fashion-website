@@ -18,6 +18,7 @@
     --border-gold: rgba(212, 175, 55, 0.3);
     
     --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-serif-simple: 'Lora', Georgia, serif; /* Cleaner serif w/ lining numerals */
     --font-sans: 'Outfit', sans-serif;
     
     --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
@@ -1881,16 +1882,19 @@ section.active-page {
 }
 
 .stat-num {
-    font-family: var(--font-serif);
-    font-size: clamp(2.6rem, 4vw, 3.6rem);
-    font-weight: 400;
+    font-family: var(--font-serif-simple);
+    font-size: clamp(2.5rem, 3.8vw, 3.4rem);
+    font-weight: 500;
     line-height: 1;
     color: var(--color-gold);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
+    font-variant-numeric: lining-nums tabular-nums;
 }
 
 .stat-unit {
-    font-size: 0.55em;
+    font-family: var(--font-serif-simple);
+    font-size: 0.5em;
+    font-weight: 400;
     color: rgba(212, 175, 55, 0.7);
     vertical-align: super;
     margin: 0 0.05em;
