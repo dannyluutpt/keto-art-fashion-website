@@ -1543,6 +1543,12 @@ section.active-page {
    ENRICHED HOME PAGE SECTIONS
    ========================================================================== */
 
+.home-values-section,
+.home-craft-section,
+.home-atelier-section {
+    padding: 10rem 0; /* Add proper padding to nested page sections */
+}
+
 /* 1. Home Section: Royal Values */
 .home-values-section {
     background-color: var(--color-bg-alt);
@@ -1732,5 +1738,15 @@ section.active-page {
     .craft-image-frame {
         max-width: 100%;
         padding-bottom: 70%; /* Horizontal widescreen aspect on smaller views */
+    }
+}
+
+/* Mobile Spacing and Padding Overrides */
+@media (max-width: 768px) {
+    section,
+    .home-values-section,
+    .home-craft-section,
+    .home-atelier-section {
+        padding: 6rem 0 !important; /* Smaller responsive padding on mobile */
     }
 }
