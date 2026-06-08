@@ -482,6 +482,13 @@ section.active-page {
     display: block; /* Show active page */
 }
 
+/* Home page container: use flexbox column to prevent margin collapsing between nested divs */
+#hero.active-page {
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Remove section padding — each child div handles its own padding */
+}
+
 .section-tag {
     font-family: var(--font-sans);
     font-size: 0.8rem;
@@ -1543,10 +1550,14 @@ section.active-page {
    ENRICHED HOME PAGE SECTIONS
    ========================================================================== */
 
-.home-values-section,
-.home-craft-section,
-.home-atelier-section {
-    padding: 10rem 0; /* Add proper padding to nested page sections */
+/* Nested home sections inside #hero need their own spacing */
+#hero .home-values-section,
+#hero .home-craft-section,
+#hero .home-atelier-section {
+    padding: 10rem 0 !important;
+    display: block !important;
+    width: 100%;
+    position: relative;
 }
 
 /* 1. Home Section: Royal Values */
@@ -1743,10 +1754,44 @@ section.active-page {
 
 /* Mobile Spacing and Padding Overrides */
 @media (max-width: 768px) {
-    section,
-    .home-values-section,
-    .home-craft-section,
-    .home-atelier-section {
-        padding: 6rem 0 !important; /* Smaller responsive padding on mobile */
+    section {
+        padding: 6rem 0;
+    }
+    
+    #hero .home-values-section,
+    #hero .home-craft-section,
+    #hero .home-atelier-section {
+        padding: 5rem 0 !important; /* Smaller responsive padding on mobile */
+    }
+
+    .craft-container {
+        flex-direction: column;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-grid {
+        gap: 3rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .craft-quote-text {
+        font-size: 1.4rem;
+    }
+
+    .lookbook-container {
+        padding: 0 1.5rem;
     }
 }
