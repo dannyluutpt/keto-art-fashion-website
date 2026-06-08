@@ -2,6 +2,12 @@
    KETO ART ATELIER - DYNAMIC INTERACTION SYSTEM
    ========================================================================== */
 
+// Disable browser's automatic scroll restoration on page reload/navigation
+// This ensures the page always starts from the top
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
@@ -485,6 +491,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize page states
     initHashPage();
+
+    // Always scroll to top on load/reload (works together with history.scrollRestoration = 'manual')
+    window.scrollTo(0, 0);
 
     // Entrance Gate Reveal: slide gates open after page ready
     setTimeout(() => {
