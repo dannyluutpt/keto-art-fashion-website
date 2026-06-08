@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Keto Art - Thương hiệu thời trang hoàng gia, sang trọng và quý tộc. Bộ sưu tập Haute Couture tinh tế phối hợp giữa sắc xanh dương nhạt thanh lịch và màu trắng thuần khiết.">
+    <title>Keto Art | Thời Trang Hoàng Gia & Quý Tộc</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&family=Playfair+Display+SC:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Custom Luxury Cursor -->
+    <div class="custom-cursor-dot" id="cursorDot"></div>
+    <div class="custom-cursor-circle" id="cursorCircle"></div>
+
+    <!-- Gate Transition Overlay -->
+    <div class="gate-transition-overlay active" id="gateTransition">
+        <div class="gate-door gate-left">
+            <svg class="gate-crest-svg" viewBox="0 0 300 800" fill="none">
+                <defs>
+                    <linearGradient id="goldGradientLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#A67C1E" />
+                        <stop offset="20%" stop-color="#D4AF37" />
+                        <stop offset="40%" stop-color="#F8E7A2" />
+                        <stop offset="60%" stop-color="#D4AF37" />
+                        <stop offset="80%" stop-color="#F8E7A2" />
+                        <stop offset="100%" stop-color="#8A640F" />
+                    </linearGradient>
+                </defs>
+                <!-- Outer gold borders -->
+                <rect x="10" y="10" width="280" height="780" stroke="url(#goldGradientLeft)" stroke-width="3" rx="4" />
+                <rect x="18" y="18" width="272" height="764" stroke="url(#goldGradientLeft)" stroke-width="1" />
+                
+                <!-- Arch top headers -->
+                <path d="M 20 150 Q 150 120 280 80" stroke="url(#goldGradientLeft)" stroke-width="4.5" />
+                <path d="M 20 160 Q 150 130 280 90" stroke="url(#goldGradientLeft)" stroke-width="1.5" />
+                
+                <!-- Top scrolls filigree (Neoclassical Swirls) -->
+                <path d="M 40 145 C 80 120, 120 100, 160 130 C 200 150, 240 100, 270 110" stroke="url(#goldGradientLeft)" stroke-width="2" />
+                <path d="M 80 130 Q 110 110 140 125" stroke="url(#goldGradientLeft)" stroke-width="1.2" />
+                
+                <!-- Vertical bars & spears -->
+                <line x1="40" y1="147" x2="40" y2="760" stroke="url(#goldGradientLeft)" stroke-width="2.5" />
+                <path d="M 40 133 L 35 147 L 45 147 Z" fill="url(#goldGradientLeft)" />
+                
+                <line x1="80" y1="139" x2="80" y2="760" stroke="url(#goldGradientLeft)" stroke-width="2.5" />
+                <path d="M 80 125 L 75 139 L 85 139 Z" fill="url(#goldGradientLeft)" />
+
+                <line x1="120" y1="131" x2="120" y2="760" stroke="url(#goldGradientLeft)" stroke-width="2.5" />
+                <path d="M 120 117 L 115 131 L 125 131 Z" fill="url(#goldGradientLeft)" />
+
+                <line x1="160" y1="123" x2="160" y2="760" stroke="url(#goldGradientLeft)" stroke-width="2.5" />
+                <path d="M 160 109 L 155 123 L 165 123 Z" fill="url(#goldGradientLeft)" />
+
+                <line x1="200" y1="115" x2="200" y2="760" stroke="url(#goldGradientLeft)" stroke-width="2.5" />
+                <path d="M 200 101 L 195 115 L 205 115 Z" fill="url(#goldGradientLeft)" />
+
+                <line x1="240" y1="107" x2="240" y2="760" stroke="url(#goldGradientLeft)" stroke-width="2.5" />
+                <path d="M 240 93 L 235 107 L 245 107 Z" fill="url(#goldGradientLeft)" />
+
+                <!-- Horizontals -->
+                <line x1="20" y1="450" x2="280" y2="450" stroke="url(#goldGradientLeft)" stroke-width="4.5" />
+                <line x1="20" y1="460" x2="280" y2="460" stroke="url(#goldGradientLeft)" stroke-width="1.8" />
+                <line x1="20" y1="710" x2="280" y2="710" stroke="url(#goldGradientLeft)" stroke-width="4.5" />
+                
+                <!-- Central Circular Medallion (Left Half) -->
+                <path d="M 300 260 A 90 90 0 0 0 300 440" stroke="url(#goldGradientLeft)" stroke-width="4" fill="none" />
+                <path d="M 300 270 A 80 80 0 0 0 300 430" stroke="url(#goldGradientLeft)" stroke-width="1.2" stroke-dasharray="4 4" fill="none" />
+                
+                <!-- Crown (Left half - Realistic) -->
+                <path d="M 300 210 Q 280 215 270 230 L 300 240 Z" fill="url(#goldGradientLeft)" />
+                <path d="M 300 215 L 290 190 L 285 218 L 270 195 L 270 230 L 300 230" fill="url(#goldGradientLeft)" />
+                <circle cx="290" cy="190" r="2.5" fill="url(#goldGradientLeft)" />
+                <circle cx="270" cy="195" r="2.5" fill="url(#goldGradientLeft)" />
+                
+                <!-- Monogram K (Left half - Serif Typography) -->
+                <text x="290" y="375" font-family="'Cormorant Garamond', Georgia, serif" font-size="78" font-weight="300" fill="url(#goldGradientLeft)" text-anchor="end">K</text>
+                
+                <!-- Base flourish -->
+                <path d="M 300 455 C 270 455 250 475 255 490 L 300 465" stroke="url(#goldGradientLeft)" stroke-width="2.2" fill="none" />
+                <path d="M 50 740 Q 150 720 250 740" stroke="url(#goldGradientLeft)" stroke-width="3" />
+                <path d="M 70 720 C 90 690 140 690 150 720" stroke="url(#goldGradientLeft)" stroke-width="2" />
+                <path d="M 150 720 C 160 690 210 690 230 720" stroke="url(#goldGradientLeft)" stroke-width="2" />
+            </svg>
+        </div>
+        
+        <div class="gate-door gate-right">
+            <svg class="gate-crest-svg" viewBox="0 0 300 800" fill="none">
+                <defs>
+                    <linearGradient id="goldGradientRight" x1="100%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#A67C1E" />
+                        <stop offset="20%" stop-color="#D4AF37" />
+                        <stop offset="40%" stop-color="#F8E7A2" />
+                        <stop offset="60%" stop-color="#D4AF37" />
+                        <stop offset="80%" stop-color="#F8E7A2" />
+                        <stop offset="100%" stop-color="#8A640F" />
+                    </linearGradient>
+                </defs>
+                <!-- Outer gold borders -->
+                <rect x="10" y="10" width="280" height="780" stroke="url(#goldGradientRight)" stroke-width="3" rx="4" />
+                <rect x="10" y="18" width="272" height="764" stroke="url(#goldGradientRight)" stroke-width="1" />
+                
+                <!-- Arch top headers -->
+                <path d="M 280 150 Q 150 120 20 80" stroke="url(#goldGradientRight)" stroke-width="4.5" />
+                <path d="M 280 160 Q 150 130 20 90" stroke="url(#goldGradientRight)" stroke-width="1.5" />
+                
+                <!-- Top scrolls filigree (Neoclassical Swirls) -->
+                <path d="M 260 145 C 220 120, 180 100, 140 130 C 100 150, 60 100, 30 110" stroke="url(#goldGradientRight)" stroke-width="2" />
+                <path d="M 220 130 Q 190 110 160 125" stroke="url(#goldGradientRight)" stroke-width="1.2" />
+                
+                <!-- Vertical bars & spears -->
+                <line x1="260" y1="147" x2="260" y2="760" stroke="url(#goldGradientRight)" stroke-width="2.5" />
+                <path d="M 260 133 L 255 147 L 265 147 Z" fill="url(#goldGradientRight)" />
+                
+                <line x1="220" y1="139" x2="220" y2="760" stroke="url(#goldGradientRight)" stroke-width="2.5" />
+                <path d="M 220 125 L 215 139 L 225 139 Z" fill="url(#goldGradientRight)" />
+
+                <line x1="180" y1="131" x2="180" y2="760" stroke="url(#goldGradientRight)" stroke-width="2.5" />
+                <path d="M 180 117 L 175 131 L 185 131 Z" fill="url(#goldGradientRight)" />
+
+                <line x1="140" y1="123" x2="140" y2="760" stroke="url(#goldGradientRight)" stroke-width="2.5" />
+                <path d="M 140 109 L 135 123 L 145 123 Z" fill="url(#goldGradientRight)" />
+
+                <line x1="100" y1="115" x2="100" y2="760" stroke="url(#goldGradientRight)" stroke-width="2.5" />
+                <path d="M 100 101 L 95 115 L 105 115 Z" fill="url(#goldGradientRight)" />
+
+                <line x1="60" y1="107" x2="60" y2="760" stroke="url(#goldGradientRight)" stroke-width="2.5" />
+                <path d="M 60 93 L 55 107 L 65 107 Z" fill="url(#goldGradientRight)" />
+
+                <!-- Horizontals -->
+                <line x1="20" y1="450" x2="280" y2="450" stroke="url(#goldGradientRight)" stroke-width="4.5" />
+                <line x1="20" y1="460" x2="280" y2="460" stroke="url(#goldGradientRight)" stroke-width="1.8" />
+                <line x1="20" y1="710" x2="280" y2="710" stroke="url(#goldGradientRight)" stroke-width="4.5" />
+                
+                <!-- Central Circular Medallion (Right Half) -->
+                <path d="M 0 260 A 90 90 0 0 1 0 440" stroke="url(#goldGradientRight)" stroke-width="4" fill="none" />
+                <path d="M 0 270 A 80 80 0 0 1 0 430" stroke="url(#goldGradientRight)" stroke-width="1.2" stroke-dasharray="4 4" fill="none" />
+                
+                <!-- Crown (Right half - Realistic) -->
+                <path d="M 0 210 Q 20 215 30 230 L 0 240 Z" fill="url(#goldGradientRight)" />
+                <path d="M 0 215 L 10 190 L 15 218 L 30 195 L 30 230 L 0 230" fill="url(#goldGradientRight)" />
+                <circle cx="10" cy="190" r="3.5" fill="url(#goldGradientRight)" />
+                <circle cx="30" cy="195" r="2.5" fill="url(#goldGradientRight)" />
+                
+                <!-- Monogram A (Right half - Serif Typography) -->
+                <text x="10" y="375" font-family="'Cormorant Garamond', Georgia, serif" font-size="78" font-weight="300" fill="url(#goldGradientRight)" text-anchor="start">A</text>
+                
+                <!-- Base flourish -->
+                <path d="M 0 455 C 30 455 50 475 45 490 L 0 465" stroke="url(#goldGradientRight)" stroke-width="2.2" fill="none" />
+                <path d="M 250 740 Q 150 720 50 740" stroke="url(#goldGradientRight)" stroke-width="3" />
+                <path d="M 230 720 C 210 690 160 690 150 720" stroke="url(#goldGradientRight)" stroke-width="2" />
+                <path d="M 150 720 C 140 690 90 690 70 720" stroke="url(#goldGradientRight)" stroke-width="2" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="main-header" id="mainHeader">
+        <div class="header-container">
+            <a href="#" class="brand-logo" id="brandLogo">KETO ART</a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#hero" class="nav-link active">Trang Chủ</a></li>
+                    <li><a href="#collection" class="nav-link">Bộ Sưu Tập</a></li>
+                    <li><a href="#philosophy" class="nav-link">Triết Lý</a></li>
+                    <li><a href="#lookbook" class="nav-link">Lookbook</a></li>
+                    <li><a href="#contact" class="nav-link">Liên Hệ</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="action-btn" id="searchBtn" aria-label="Tìm kiếm">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <button class="action-btn" id="wishlistBtn" aria-label="Yêu thích">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </button>
+                <button class="action-btn" id="cartBtn" aria-label="Giỏ hàng">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </button>
+                <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Mở menu">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HOME PAGE CONTAINER (Active by default) -->
+    <section id="hero" class="home-page-container active-page">
+        <!-- 1. The Full-Screen Hero Greeting -->
+        <div class="hero-welcome-banner">
+            <div class="hero-bg-wrapper">
+                <img src="assets/images/hero.png" alt="Keto Art Haute Couture Hero" class="hero-bg-img">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <span class="hero-subtitle scroll-reveal-fade">HAUTE COUTURE</span>
+                <h1 class="hero-title scroll-reveal-fade">Kiệt Tác Quý&nbsp;Tộc</h1>
+                <p class="hero-description scroll-reveal-fade">Sự giao thoa hoàn hảo giữa nét thuần khiết của sắc trắng và hơi thở thanh tao của xanh dương nhạt hoàng gia.</p>
+                <div class="hero-buttons scroll-reveal-fade">
+                    <a href="#collection" class="btn btn-primary" id="heroExploreBtn">Khám Phá Bộ Sưu Tập</a>
+                    <a href="#philosophy" class="btn btn-outline" id="heroStoryBtn">Câu Chuyện Thương Hiệu</a>
+                </div>
+            </div>
+            <div class="scroll-indicator" id="scrollIndicator">
+                <span class="scroll-text">Cuộn xuống</span>
+                <div class="scroll-line"></div>
+            </div>
+        </div>
+
+        <!-- 2. Home Section: Royal Brand Values -->
+        <div class="home-values-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-tag">KETO ART PRIVILEGE</span>
+                    <h2 class="section-title text-center">Tôn Chỉ Độc&nbsp;Bản</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card scroll-reveal">
+                        <div class="value-num">01</div>
+                        <h3>Haute Couture</h3>
+                        <p>Mỗi thiết kế đều được may đo thủ công riêng biệt tại xưởng thiết kế của chúng tôi, cam kết phom dáng độc bản và tinh tế trên từng đường kim mũi chỉ.</p>
+                    </div>
+                    <div class="value-card scroll-reveal">
+                        <div class="value-num">02</div>
+                        <h3>Sắc Lam Thanh Nhã</h3>
+                        <p>Lấy cảm hứng từ sắc xanh vương tộc của hoàng gia châu Âu cổ kính, kết hợp nền trắng ngà cẩm thạch để kiến tạo nên phong thái thanh tao vô song.</p>
+                    </div>
+                    <div class="value-card scroll-reveal">
+                        <div class="value-num">03</div>
+                        <h3>Dịch Vụ Vương Giả</h3>
+                        <p>Trải nghiệm dịch vụ may đo riêng tư tại nhà hoặc trong không gian khép kín của Atelier, nơi sự bảo mật và trải nghiệm cá nhân của bạn là tối thượng.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Home Section: The Craftsmanship & Quote Banner -->
+        <div class="home-craft-section">
+            <div class="container craft-container">
+                <div class="craft-quote-col scroll-reveal">
+                    <span class="craft-tag">CẢM HỨNG THIẾT KẾ</span>
+                    <p class="craft-quote-text">"Sự quý phái thực sự không nằm ở sự phô diễn bên ngoài, mà ẩn mình trong sự thanh khiết của chất liệu tơ lụa và sự chính xác tuyệt đối trong phom dáng may đo."</p>
+                    <span class="craft-author">— Giám đốc Sáng tạo Keto Art</span>
+                </div>
+                <div class="craft-visual-col scroll-reveal">
+                    <div class="craft-image-frame">
+                        <img src="assets/images/editorial.png" alt="Haute couture tailoring details" class="craft-side-img">
+                        <div class="craft-overlay-border"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Home Section: Private Appointment Invitation -->
+        <div class="home-atelier-section">
+            <div class="container text-center scroll-reveal">
+                <span class="section-tag">PRIVATE APPOINTMENT</span>
+                <h2 class="section-title">Khám Phá Không Gian May Đo Riêng Tư</h2>
+                <p class="atelier-invite-desc">Hãy lên lịch hẹn với các nghệ nhân may đo hàng đầu của Keto Art để bắt đầu hành trình kiến tạo những tác phẩm thời trang dành riêng cho bạn.</p>
+                <a href="#contact" class="btn btn-primary" id="homeBookBtn">Đặt Lịch Hẹn Atelier</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Philosophy Section (Rotating badge here) -->
+    <section class="philosophy-section" id="philosophy">
+        <div class="container philosophy-container">
+            <div class="philosophy-text-col scroll-reveal">
+                <span class="section-tag">TRIẾT LÝ KETO ART</span>
+                <h2 class="section-title">Nghệ Thuật Của Sự Quý&nbsp;Phái</h2>
+                <p class="philosophy-body">Keto Art được định hình bởi lý tưởng phục hưng phong cách quý tộc cổ điển trong hơi thở đương đại. Mỗi đường kim mũi chỉ là một lời tuyên bố về sự hoàn mỹ, nơi sắc trắng tinh khôi hòa quyện cùng sắc xanh nhạt thanh tao của bầu trời buổi sớm.</p>
+                <blockquote class="philosophy-quote">
+                    "Thời trang không chỉ là những gì bạn mặc, đó là biểu tượng của phong thái vương giả và khí chất nội tại."
+                </blockquote>
+                <div class="philosophy-signature">Keto Art Atelier</div>
+            </div>
+            
+            <div class="philosophy-visual-col scroll-reveal">
+                <div class="luxury-badge-wrapper">
+                    <!-- Continuous spinning badge -->
+                    <div class="rotating-badge" id="rotatingBadge">
+                        <svg viewBox="0 0 100 100" class="badge-svg">
+                            <path id="textPath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+                            <text class="badge-text">
+                                <textPath href="#textPath">KETO ART • HAUTE COUTURE • EST. 2026 • ROYAL ELEGANCE •</textPath>
+                            </text>
+                        </svg>
+                        <div class="badge-center">
+                            <span class="badge-symbol">K</span>
+                        </div>
+                    </div>
+                    <!-- Ambient slow floating frames -->
+                    <div class="frame-ambient-1"></div>
+                    <div class="frame-ambient-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curated Collection Section -->
+    <section class="collection-section" id="collection">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-tag">ATELIER SELECTION</span>
+                <h2 class="section-title text-center">Tác Phẩm Đặc&nbsp;Sắc</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card scroll-reveal" id="product1">
+                    <div class="product-image-container">
+                        <img src="assets/images/dress.png" alt="Aura Silk Gown" class="product-img">
+                        <div class="product-overlay">
+                            <button class="btn btn-light quick-view-btn" data-product="1">Xem Chi Tiết</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Đầm Dạ Hội</span>
+                        <h3 class="product-name">Aura Silk Gown</h3>
+                        <span class="product-price">18,500,000 ₫</span>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card scroll-reveal" id="product2">
+                    <div class="product-image-container">
+                        <img src="assets/images/suit.png" alt="Royale Tailored Suit" class="product-img">
+                        <div class="product-overlay">
+                            <button class="btn btn-light quick-view-btn" data-product="2">Xem Chi Tiết</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Bespoke Suit</span>
+                        <h3 class="product-name">Royale Tailored Suit</h3>
+                        <span class="product-price">24,000,000 ₫</span>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card scroll-reveal" id="product3">
+                    <div class="product-image-container">
+                        <img src="assets/images/accessory.png" alt="Noblesse Leather Bag" class="product-img">
+                        <div class="product-overlay">
+                            <button class="btn btn-light quick-view-btn" data-product="3">Xem Chi Tiết</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Phụ Kiện</span>
+                        <h3 class="product-name">Noblesse Leather Bag</h3>
+                        <span class="product-price">9,500,000 ₫</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lookbook Section (Interactive sliding exhibition) -->
+    <section class="lookbook-section" id="lookbook">
+        <div class="lookbook-container">
+            <div class="lookbook-info-col scroll-reveal">
+                <span class="section-tag">LOOKBOOK 2026</span>
+                <h2 class="section-title">Vũ Điệu Ánh&nbsp;Sáng</h2>
+                <p class="lookbook-desc">Khám phá câu chuyện hình ảnh qua từng thiết kế thượng lưu. Ánh sáng chiếu rọi lên những nếp vải lụa tơ tằm mềm mại, phản chiếu sắc xanh hoàng tộc tinh tế trên nền đá cẩm thạch trắng cổ kính.</p>
+                <div class="lookbook-navigation">
+                    <button class="lookbook-nav-btn prev" id="lookbookPrev" aria-label="Slide trước">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    <button class="lookbook-nav-btn next" id="lookbookNext" aria-label="Slide tiếp theo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+                <div class="lookbook-counter" id="lookbookCounter">
+                    <span class="current">01</span>
+                    <span class="separator">/</span>
+                    <span class="total">02</span>
+                </div>
+            </div>
+
+            <div class="lookbook-slider-col scroll-reveal">
+                <div class="lookbook-slider-viewport">
+                    <div class="lookbook-slider-track" id="lookbookTrack">
+                        <!-- Slide 1 -->
+                        <div class="lookbook-slide active">
+                            <img src="assets/images/hero.png" alt="Keto Art Editorial One" class="lookbook-slide-img">
+                            <div class="slide-caption">Chương I: Sự Khởi Đầu Của Hào Quang</div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="lookbook-slide">
+                            <img src="assets/images/editorial.png" alt="Keto Art Editorial Two" class="lookbook-slide-img">
+                            <div class="slide-caption">Chương II: Những Phút Giây Tự Do</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Newsletter Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info scroll-reveal">
+                    <span class="section-tag">KETO ART ATELIER</span>
+                    <h2 class="section-title">Chào Mừng Đến Với Thế Giới Thượng&nbsp;Lưu</h2>
+                    <p class="contact-desc">Hãy ghé thăm không gian trưng bày của chúng tôi hoặc để lại lời nhắn để nhận những đặc quyền dành riêng cho giới quý tộc.</p>
+                    
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Địa chỉ</span>
+                            <span class="detail-value">Phố Hàng Khay, Quận Hoàn Kiếm, Hà Nội</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Điện thoại</span>
+                            <span class="detail-value">+84 988 888 888</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Email</span>
+                            <span class="detail-value">atelier@ketoart.vn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper scroll-reveal">
+                    <h3 class="form-title">Đăng Ký Thành Viên Hoàng&nbsp;Gia</h3>
+                    <p class="form-subtitle">Nhận thông tin sớm nhất về các bộ sưu tập Haute Couture giới hạn.</p>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="inputName" name="name" required placeholder=" ">
+                            <label for="inputName">Họ và Tên</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="inputEmail" name="email" required placeholder=" ">
+                            <label for="inputEmail">Địa chỉ Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="inputPhone" name="phone" placeholder=" ">
+                            <label for="inputPhone">Số Điện Thoại</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit" id="submitFormBtn">
+                            <span class="btn-text">Gửi Yêu Cầu Đăng Ký</span>
+                            <span class="btn-shimmer"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">KETO ART</a>
+                <p class="footer-tagline">Nâng tầm khí chất quý tộc trong cuộc sống đương đại.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Khám Phá</h4>
+                    <ul>
+                        <li><a href="#hero">Mới Nhất</a></li>
+                        <li><a href="#collection">Bộ Sưu Tập</a></li>
+                        <li><a href="#lookbook">Lookbook</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h4>Hỗ Trợ</h4>
+                    <ul>
+                        <li><a href="#">Dịch Vụ Atelier</a></li>
+                        <li><a href="#">Chăm Sóc Khách Hàng</a></li>
+                        <li><a href="#">Chính Sách Bảo Mật</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p class="copyright">&copy; 2026 Keto Art. Tất cả các quyền được bảo lưu.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Pinterest">Pinterest</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Quick-View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Đóng">&times;</button>
+            <div class="modal-body-grid">
+                <div class="modal-image-col">
+                    <img src="" alt="Product Large Image" id="modalProductImg">
+                </div>
+                <div class="modal-info-col">
+                    <span class="modal-category" id="modalProductCategory">Danh mục</span>
+                    <h2 class="modal-name" id="modalProductName">Tên sản phẩm</h2>
+                    <div class="modal-price" id="modalProductPrice">Giá tiền</div>
+                    <div class="modal-divider"></div>
+                    <p class="modal-description" id="modalProductDesc">Mô tả sản phẩm được làm từ chất liệu cao cấp nhất, phối màu trắng và xanh dương nhạt hoàng tộc. Mỗi đường chỉ may đo riêng tinh xảo.</p>
+                    <div class="modal-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Chất liệu:</span>
+                            <span class="spec-value" id="modalProductMaterial">Tơ tằm 100% tự nhiên</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Bảo quản:</span>
+                            <span class="spec-value">Giặt khô chuyên dụng</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary modal-buy-btn" id="modalBuyBtn">Liên Hệ Đặt May Đo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
