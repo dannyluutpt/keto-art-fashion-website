@@ -4,15 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Keto Art - Thương hiệu thời trang hoàng gia, sang trọng và quý tộc. Bộ sưu tập Haute Couture tinh tế phối hợp giữa sắc xanh dương nhạt thanh lịch và màu trắng thuần khiết.">
+    <meta name="theme-color" content="#1A2E40">
     <title>Keto Art | Thời Trang Hoàng Gia & Quý Tộc</title>
+
+    <!-- Favicon (inline SVG — gold "K" monogram, no extra file needed) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231A2E40'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23D4AF37' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph / Social sharing (đổi URL thật của bạn vào og:url & og:image khi deploy) -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:site_name" content="Keto Art Atelier">
+    <meta property="og:title" content="Keto Art | Thời Trang Hoàng Gia & Quý Tộc">
+    <meta property="og:description" content="Bộ sưu tập Haute Couture tinh tế — sắc xanh dương nhạt hoàng gia hòa quyện màu trắng thuần khiết. Dịch vụ may đo riêng tư đẳng cấp vương giả.">
+    <meta property="og:image" content="assets/images/hero.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Keto Art | Thời Trang Hoàng Gia & Quý Tộc">
+    <meta name="twitter:description" content="Bộ sưu tập Haute Couture tinh tế — phong thái quý tộc trong hơi thở đương đại.">
+    <meta name="twitter:image" content="assets/images/hero.png">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&family=Playfair+Display+SC:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+    <!-- Preload hero image for faster first paint (LCP) -->
+    <link rel="preload" as="image" href="assets/images/hero.png">
+
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=1.0.3">
+    <link rel="stylesheet" href="style.css?v=1.0.4">
 </head>
 <body>
+
+    <!-- Film Grain Texture Overlay (analog luxury atmosphere) -->
+    <div class="grain-overlay" aria-hidden="true"></div>
 
     <!-- Custom Luxury Cursor -->
     <div class="custom-cursor-dot" id="cursorDot"></div>
@@ -193,7 +217,7 @@
                         <path d="M16 10a4 4 0 0 1-8 0"></path>
                     </svg>
                 </button>
-                <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Mở menu">
+                <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Mở menu" aria-expanded="false" aria-controls="navMenu">
                     <span></span>
                     <span></span>
                 </button>
@@ -206,7 +230,7 @@
         <!-- 1. The Full-Screen Hero Greeting -->
         <div class="hero-welcome-banner">
             <div class="hero-bg-wrapper">
-                <img src="assets/images/hero.png" alt="Keto Art Haute Couture Hero" class="hero-bg-img">
+                <img src="assets/images/hero.png" alt="Người mẫu Keto Art trong đầm Haute Couture xanh dương nhạt giữa khu vườn hoàng gia" class="hero-bg-img" fetchpriority="high" decoding="async" width="1920" height="1080">
                 <div class="hero-overlay"></div>
             </div>
             <div class="hero-content">
@@ -219,6 +243,24 @@
                 </div>
             </div>
 
+        </div>
+
+        <!-- 1.5 Home Section: Press / Featured In Strip -->
+        <div class="home-press-section">
+            <div class="container scroll-reveal">
+                <span class="press-tag">ĐƯỢC TÔN VINH TRÊN</span>
+                <div class="press-logos">
+                    <span class="press-logo">VOGUE</span>
+                    <span class="press-divider"></span>
+                    <span class="press-logo">HARPER'S BAZAAR</span>
+                    <span class="press-divider"></span>
+                    <span class="press-logo">ELLE</span>
+                    <span class="press-divider"></span>
+                    <span class="press-logo">L'OFFICIEL</span>
+                    <span class="press-divider"></span>
+                    <span class="press-logo">TATLER</span>
+                </div>
+            </div>
         </div>
 
         <!-- 2. Home Section: Royal Brand Values -->
@@ -249,6 +291,30 @@
             </div>
         </div>
 
+        <!-- 2.5 Home Section: Credentials / Stats Band -->
+        <div class="home-stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item scroll-reveal">
+                        <span class="stat-num" data-count="2026">2026</span>
+                        <span class="stat-label">Năm Thành Lập Atelier</span>
+                    </div>
+                    <div class="stat-item scroll-reveal">
+                        <span class="stat-num" data-count="100">100<span class="stat-unit">%</span></span>
+                        <span class="stat-label">May Đo Thủ Công Riêng Biệt</span>
+                    </div>
+                    <div class="stat-item scroll-reveal">
+                        <span class="stat-num" data-count="48"><span class="stat-unit">≤</span>48<span class="stat-unit">h</span></span>
+                        <span class="stat-label">Hẹn Thử Đồ Riêng Tư</span>
+                    </div>
+                    <div class="stat-item scroll-reveal">
+                        <span class="stat-num">1<span class="stat-unit">:</span>1</span>
+                        <span class="stat-label">Cố Vấn Phong Cách Cá Nhân</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- 3. Home Section: The Craftsmanship & Quote Banner -->
         <div class="home-craft-section">
             <div class="container craft-container">
@@ -259,9 +325,46 @@
                 </div>
                 <div class="craft-visual-col scroll-reveal">
                     <div class="craft-image-frame">
-                        <img src="assets/images/editorial.png" alt="Haute couture tailoring details" class="craft-side-img">
+                        <img src="assets/images/editorial.png" alt="Chi tiết may đo thủ công Haute Couture của Keto Art" class="craft-side-img" loading="lazy" decoding="async">
                         <div class="craft-overlay-border"></div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3.5 Home Section: Client Testimonials -->
+        <div class="home-testimonials-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-tag">LỜI TỪ GIỚI THƯỢNG LƯU</span>
+                    <h2 class="section-title text-center">Tiếng Vọng Từ Những Quý&nbsp;Nhân</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="testimonials-grid">
+                    <figure class="testimonial-card scroll-reveal">
+                        <span class="testimonial-mark">&ldquo;</span>
+                        <blockquote class="testimonial-text">Chiếc đầm Keto Art khoác lên tôi tại dạ tiệc thường niên đã khiến cả khán phòng phải ngoái nhìn. Phom dáng may đo riêng tinh xảo đến từng milimét.</blockquote>
+                        <figcaption class="testimonial-author">
+                            <span class="author-name">Bà Lê Hà Phương</span>
+                            <span class="author-title">Nhà Sưu Tầm Nghệ Thuật, Hà Nội</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="testimonial-card scroll-reveal">
+                        <span class="testimonial-mark">&ldquo;</span>
+                        <blockquote class="testimonial-text">Trải nghiệm tại Atelier thực sự vương giả — riêng tư, tỉ mỉ và đầy cảm hứng. Bộ vest bespoke của tôi giờ là tuyên ngôn phong cách không thể thay thế.</blockquote>
+                        <figcaption class="testimonial-author">
+                            <span class="author-name">Ông Trần Quốc Khánh</span>
+                            <span class="author-title">Chủ Tịch Tập Đoàn, TP. Hồ Chí Minh</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="testimonial-card scroll-reveal">
+                        <span class="testimonial-mark">&ldquo;</span>
+                        <blockquote class="testimonial-text">Sắc xanh dương nhạt đặc trưng của Keto Art mang một khí chất quý tộc rất riêng. Tôi chưa từng tìm thấy thương hiệu Việt nào tinh tế đến vậy.</blockquote>
+                        <figcaption class="testimonial-author">
+                            <span class="author-name">Bà Nguyễn Mai Anh</span>
+                            <span class="author-title">Đại Sứ Thương Hiệu &amp; Doanh Nhân</span>
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
         </div>
@@ -325,7 +428,7 @@
                 <!-- Product 1 -->
                 <div class="product-card scroll-reveal" id="product1">
                     <div class="product-image-container">
-                        <img src="assets/images/dress.png" alt="Aura Silk Gown" class="product-img">
+                        <img src="assets/images/dress.png" alt="Aura Silk Gown — đầm dạ hội lụa tơ tằm" class="product-img" loading="lazy" decoding="async">
                         <div class="product-overlay">
                             <button class="btn btn-light quick-view-btn" data-product="1">Xem Chi Tiết</button>
                         </div>
@@ -340,7 +443,7 @@
                 <!-- Product 2 -->
                 <div class="product-card scroll-reveal" id="product2">
                     <div class="product-image-container">
-                        <img src="assets/images/suit.png" alt="Royale Tailored Suit" class="product-img">
+                        <img src="assets/images/suit.png" alt="Royale Tailored Suit — bộ vest bespoke quý tộc" class="product-img" loading="lazy" decoding="async">
                         <div class="product-overlay">
                             <button class="btn btn-light quick-view-btn" data-product="2">Xem Chi Tiết</button>
                         </div>
@@ -355,7 +458,7 @@
                 <!-- Product 3 -->
                 <div class="product-card scroll-reveal" id="product3">
                     <div class="product-image-container">
-                        <img src="assets/images/accessory.png" alt="Noblesse Leather Bag" class="product-img">
+                        <img src="assets/images/accessory.png" alt="Noblesse Leather Bag — túi da bê thủ công" class="product-img" loading="lazy" decoding="async">
                         <div class="product-overlay">
                             <button class="btn btn-light quick-view-btn" data-product="3">Xem Chi Tiết</button>
                         </div>
@@ -403,12 +506,12 @@
                     <div class="lookbook-slider-track" id="lookbookTrack">
                         <!-- Slide 1 -->
                         <div class="lookbook-slide active">
-                            <img src="assets/images/hero.png" alt="Keto Art Editorial One" class="lookbook-slide-img">
+                            <img src="assets/images/hero.png" alt="Keto Art Editorial — Chương I: Sự Khởi Đầu Của Hào Quang" class="lookbook-slide-img" loading="lazy" decoding="async">
                             <div class="slide-caption">Chương I: Sự Khởi Đầu Của Hào Quang</div>
                         </div>
                         <!-- Slide 2 -->
                         <div class="lookbook-slide">
-                            <img src="assets/images/editorial.png" alt="Keto Art Editorial Two" class="lookbook-slide-img">
+                            <img src="assets/images/editorial.png" alt="Keto Art Editorial — Chương II: Những Phút Giây Tự Do" class="lookbook-slide-img" loading="lazy" decoding="async">
                             <div class="slide-caption">Chương II: Những Phút Giây Tự Do</div>
                         </div>
                     </div>
@@ -541,6 +644,6 @@
     </div>
 
     <!-- Main Scripts -->
-    <script src="script.js?v=1.0.3"></script>
+    <script src="script.js?v=1.0.4"></script>
 </body>
 </html>

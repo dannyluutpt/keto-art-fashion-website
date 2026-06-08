@@ -131,8 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (menuToggleBtn && navMenu) {
         menuToggleBtn.addEventListener('click', () => {
-            menuToggleBtn.classList.toggle('active');
+            const isOpen = menuToggleBtn.classList.toggle('active');
             navMenu.classList.toggle('active');
+            // Sync ARIA state + label for screen readers
+            menuToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            menuToggleBtn.setAttribute('aria-label', isOpen ? 'Đóng menu' : 'Mở menu');
         });
 
         // Close menu when clicking nav links
@@ -141,6 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 menuToggleBtn.classList.remove('active');
                 navMenu.classList.remove('active');
+                menuToggleBtn.setAttribute('aria-expanded', 'false');
+                menuToggleBtn.setAttribute('aria-label', 'Mở menu');
             });
         });
     }
@@ -501,5 +506,78 @@ document.addEventListener('DOMContentLoaded', () => {
             gateTransition.classList.remove('active');
         }
     }, 700); // 700ms initial delay for a theatrical entrance!
+
+
+    /* ==========================================================================
+       9. PREMIUM MOTION: SPLIT-TEXT, MAGNETIC BUTTONS, HERO PARALLAX
+       ========================================================================== */
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // --- 9a. Split-text hero title reveal (word-by-word, staggered) ---
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle && !prefersReducedMotion) {
+        // Split on whitespace (incl. &nbsp;); build with safe DOM nodes (no innerHTML)
+        const words = heroTitle.textContent.trim().split(/\s+/);
+        heroTitle.textContent = '';
+        words.forEach((w, i) => {
+            const span = document.createElement('span');
+            span.className = 'word';
+            span.textContent = w; // plain text — no HTML interpretation
+            span.style.transitionDelay = `${0.25 + i * 0.13}s`;
+            heroTitle.appendChild(span);
+            if (i < words.length - 1) {
+                heroTitle.appendChild(document.createTextNode(' '));
+            }
+        });
+        // Trigger after layout settles (double rAF so the initial state paints first)
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => heroTitle.classList.add('words-in'));
+        });
+    }
+
+    // --- 9b. Magnetic buttons (cursor-attraction) ---
+    if (!isTouchDevice && !prefersReducedMotion) {
+        const magneticButtons = document.querySelectorAll('.btn');
+        const smoothTransition =
+            'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease';
+        const followTransition =
+            'transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease';
+
+        magneticButtons.forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transition = followTransition;
+            });
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const dx = e.clientX - (rect.left + rect.width / 2);
+                const dy = e.clientY - (rect.top + rect.height / 2);
+                btn.style.transform = `translate(${dx * 0.22}px, ${dy * 0.4}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transition = smoothTransition;
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+    }
+
+    // --- 9c. Hero content parallax (subtle lift + fade on scroll) ---
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent && !prefersReducedMotion) {
+        let parallaxTicking = false;
+        const applyParallax = () => {
+            const y = window.scrollY;
+            if (y < window.innerHeight) {
+                heroContent.style.transform = `translateY(${y * 0.18}px)`;
+                heroContent.style.opacity = `${Math.max(0, 1 - y / (window.innerHeight * 0.7))}`;
+            }
+            parallaxTicking = false;
+        };
+        window.addEventListener('scroll', () => {
+            if (!parallaxTicking) {
+                requestAnimationFrame(applyParallax);
+                parallaxTicking = true;
+            }
+        }, { passive: true });
+    }
 
 });

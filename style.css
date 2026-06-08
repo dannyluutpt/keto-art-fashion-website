@@ -28,7 +28,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-box: border-box;
     box-sizing: border-box;
 }
 
@@ -65,6 +64,17 @@ body {
 
 a, button, input, textarea {
     cursor: none; /* Make sure custom cursor handles these */
+}
+
+/* Keyboard accessibility: visible focus ring only for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.nav-link:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 1px;
 }
 
 /* Typography Utilities */
@@ -343,6 +353,20 @@ body.cursor-hovering .custom-cursor-circle {
     color: var(--color-primary-dark);
     line-height: 1.1;
     font-weight: 500;
+}
+
+/* Split-text word-by-word reveal (fade-up — safe for Vietnamese diacritics) */
+.hero-title .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.55em);
+    transition: opacity 0.7s ease, transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
+}
+
+.hero-title.words-in .word {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hero-description {
@@ -1427,7 +1451,7 @@ section.active-page {
     }
     
     /* Hero mobile details */
-    .hero-section {
+    .hero-welcome-banner {
         padding: 0 5%;
     }
     .hero-title {
@@ -1553,8 +1577,17 @@ section.active-page {
 /* Nested home sections inside #hero need their own spacing */
 #hero .home-values-section,
 #hero .home-craft-section,
-#hero .home-atelier-section {
+#hero .home-atelier-section,
+#hero .home-testimonials-section {
     padding: 10rem 0 !important;
+    display: block !important;
+    width: 100%;
+    position: relative;
+}
+
+/* Slimmer home bands handle their own vertical rhythm */
+#hero .home-press-section,
+#hero .home-stats-section {
     display: block !important;
     width: 100%;
     position: relative;
@@ -1730,6 +1763,265 @@ section.active-page {
     color: var(--color-text-muted);
 }
 
+/* ==========================================================================
+   FILM GRAIN TEXTURE OVERLAY
+   ========================================================================== */
+.grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    /* No mix-blend-mode: a fixed full-viewport blended layer forces costly
+       full-page recompositing on every frame (jank on mobile). Low opacity
+       monochrome grain gives the analog texture far more cheaply. */
+}
+
+/* ==========================================================================
+   PRESS / FEATURED-IN STRIP
+   ========================================================================== */
+.home-press-section {
+    background-color: var(--color-bg);
+    padding: 4.5rem 0 !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.home-press-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.press-tag {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.press-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.press-logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-primary-dark);
+    opacity: 0.45;
+    transition: opacity 0.4s ease, color 0.4s ease;
+    white-space: nowrap;
+}
+
+.press-logo:hover {
+    opacity: 0.9;
+    color: var(--color-gold-hover);
+}
+
+.press-divider {
+    width: 1px;
+    height: 18px;
+    background-color: var(--border-gold);
+}
+
+/* ==========================================================================
+   CREDENTIALS / STATS BAND
+   ========================================================================== */
+.home-stats-section {
+    background:
+        linear-gradient(135deg, #1A2E40 0%, #11202D 100%);
+    padding: 6.5rem 0 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle gold hairline frame inside the band */
+.home-stats-section::before {
+    content: '';
+    position: absolute;
+    inset: 22px;
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    pointer-events: none;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.9rem;
+    padding: 0 1rem;
+    position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 12%;
+    height: 76%;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.stat-num {
+    font-family: var(--font-serif);
+    font-size: clamp(2.6rem, 4vw, 3.6rem);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-gold);
+    letter-spacing: 0.02em;
+}
+
+.stat-unit {
+    font-size: 0.55em;
+    color: rgba(212, 175, 55, 0.7);
+    vertical-align: super;
+    margin: 0 0.05em;
+}
+
+.stat-label {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 300;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
+    line-height: 1.5;
+    max-width: 180px;
+}
+
+/* ==========================================================================
+   CLIENT TESTIMONIALS
+   ========================================================================== */
+.home-testimonials-section {
+    background-color: var(--color-bg-alt);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+}
+
+.testimonial-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--border-color);
+    padding: 3rem 2.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 45px rgba(26, 46, 64, 0.06);
+    border-color: var(--border-gold);
+}
+
+.testimonial-mark {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    line-height: 0.6;
+    color: var(--color-gold);
+    opacity: 0.55;
+    height: 1.6rem;
+}
+
+.testimonial-text {
+    font-family: var(--font-serif);
+    font-size: 1.18rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--color-text-main);
+    flex-grow: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.author-name {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--color-primary-dark);
+}
+
+.author-title {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+}
+
+/* Responsive overrides for new home components */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem 2rem;
+    }
+    .stat-item:nth-child(2)::after {
+        display: none;
+    }
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 620px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-press-section {
+        padding: 3.5rem 0 !important;
+    }
+    .press-logos {
+        gap: 1.5rem;
+    }
+    .press-logo {
+        font-size: 1.15rem;
+    }
+    .press-divider {
+        display: none;
+    }
+    .home-stats-section {
+        padding: 4.5rem 0 !important;
+    }
+    .stats-grid {
+        gap: 2.5rem 1.5rem;
+    }
+    .stat-item::after {
+        display: none !important;
+    }
+}
+
 /* Responsive Overrides for Enriched Home Page */
 @media (max-width: 1024px) {
     .values-grid {
@@ -1760,12 +2052,9 @@ section.active-page {
     
     #hero .home-values-section,
     #hero .home-craft-section,
-    #hero .home-atelier-section {
+    #hero .home-atelier-section,
+    #hero .home-testimonials-section {
         padding: 5rem 0 !important; /* Smaller responsive padding on mobile */
-    }
-
-    .craft-container {
-        flex-direction: column;
     }
 
     .values-grid {
@@ -1793,5 +2082,35 @@ section.active-page {
 
     .lookbook-container {
         padding: 0 1.5rem;
+    }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: RESPECT REDUCED MOTION PREFERENCE
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* Keep content visible if reveal animations are disabled */
+    .scroll-reveal,
+    .scroll-reveal-fade {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* Pause looping ambient motion */
+    .hero-bg-img,
+    .badge-svg,
+    .btn-shimmer,
+    .frame-ambient-1,
+    .frame-ambient-2 {
+        animation: none !important;
     }
 }
